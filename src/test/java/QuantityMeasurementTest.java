@@ -1,6 +1,7 @@
 import org.junit.Assert;
 import org.junit.Test;
 import quantitymeasurement.Feet;
+import quantitymeasurement.Inch;
 import quantitymeasurement.type;
 
 
@@ -39,5 +40,25 @@ public class QuantityMeasurementTest {
         Feet feet2 = new Feet(1, type.feet);
         Assert.assertNotEquals(feet1, feet2);
 
+    }
+
+    @Test
+    public void givenZeroInchAndZeroInch_WhenCompared_ShouldBeEqual() {
+        Inch inch1 = new Inch(0);
+        Inch inch2 = new Inch(0);
+        Assert.assertTrue(inch1.compare(inch2));
+    }
+
+    @Test
+    public void givenZeroInchAndNull_WhenCompared_ShoulNotBeEqual() {
+        Inch inch1 = new Inch(0);
+        Assert.assertNotEquals(null,inch1);
+    }
+
+    @Test
+    public void givenZeroInchRefAndZeroInchRef_WhenCompared_ShouldBeEqual() {
+        Inch inch1 = new Inch(0);
+        Inch inch2=inch1;
+        Assert.assertEquals(inch1,inch2);
     }
 }
