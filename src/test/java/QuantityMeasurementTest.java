@@ -5,6 +5,7 @@ import quantitymeasurement.Inch;
 import quantitymeasurement.type;
 
 
+
 public class QuantityMeasurementTest {
     @Test
     public void givenZeroFtAndZeroFt_WhenCompared_ShouldBeEqual() {
@@ -60,5 +61,20 @@ public class QuantityMeasurementTest {
         Inch inch1 = new Inch(0);
         Inch inch2=inch1;
         Assert.assertEquals(inch1,inch2);
+    }
+
+    @Test
+    public void givenInchTypeAndInchType_WhenCompared_ShouldBeEqual() {
+        Inch inch1 = new Inch(0, type.inch);
+        Inch inch2 = new Inch(0, type.inch);
+        Assert.assertEquals(inch1,inch2);
+    }
+
+    @Test
+    public void givenInchFirstValAndInchSecVal_WhenCompared_ShouldNotBeEqual() {
+        Inch inch1 = new Inch(0, type.inch);
+        Inch inch2 = new Inch(1, type.inch);
+        Assert.assertNotEquals(inch1,inch2);
+
     }
 }
