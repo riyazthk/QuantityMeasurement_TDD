@@ -130,7 +130,56 @@ public class QuantityMeasurementTest {
     public void givenOneInchAndOneFeet_WhenCompared_ShouldNotBeEqual() {
         Length inch = new Length(1, Length.Unit.INCH);
         Length feet = new Length(1, Length.Unit.FEET);
-        boolean check =inch.compare(feet);
+        boolean check = inch.compare(feet);
         Assert.assertFalse(check);
+    }
+
+    @Test
+    public void givenThreeFtAndOneYd_WhenCompared_ShouldBeEqual() {
+        Length feet = new Length(3, Length.Unit.FEET);
+        Length yard = new Length(1, Length.Unit.YARD);
+        boolean check = feet.compare(yard);
+        Assert.assertTrue(check);
+    }
+
+    @Test
+    public void givenOneFtAndOneYd_WhenCompared_ShouldBeEqual() {
+        Length feet = new Length(1, Length.Unit.FEET);
+        Length yard = new Length(1, Length.Unit.YARD);
+        boolean check = feet.compare(yard);
+        Assert.assertFalse(check);
+
+    }
+
+    @Test
+    public void givenOneInchAndOneYd_WhenCompared_ShouldBeEqual() {
+        Length inch = new Length(1, Length.Unit.INCH);
+        Length yard = new Length(1, Length.Unit.YARD);
+        boolean check=inch.compare(yard);
+        Assert.assertFalse(check);
+    }
+
+    @Test
+    public void givenOneYdAndThreeFt_WhenCompared_ShouldBeEqual() {
+        Length yard = new Length(1, Length.Unit.YARD);
+        Length feet = new Length(3, Length.Unit.FEET);
+        boolean check = yard.compare(feet);
+        Assert.assertTrue(check);
+    }
+
+    @Test
+    public void givenOneYdAndThirtySixInch_WhenCompared_ShouldBeEqual() {
+        Length yard = new Length(1, Length.Unit.YARD);
+        Length inch = new Length(36, Length.Unit.INCH);
+        boolean check = yard.compare(inch);
+        Assert.assertTrue(check);
+    }
+
+    @Test
+    public void givenThirtySixInchAndOneYd_WhenCompared_ShouldBeEqual() {
+        Length inch = new Length(36, Length.Unit.INCH);
+        Length yard = new Length(1, Length.Unit.YARD);
+        boolean check = inch.compare(yard);
+        Assert.assertTrue(check);
     }
 }
