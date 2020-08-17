@@ -27,7 +27,7 @@ public class QuantityMeasurementTest {
     @Test
     public void givenTypeAndType_WhenCompared_ShouldBeEqual() {
         Length feet1 = new Length(0, Length.Unit.FEET);
-        Length feet2 = new Length(0, Length.Unit.FEET);
+        Length feet2 = new Length(1, Length.Unit.FEET);
         Assert.assertEquals(feet1, feet2);
 
     }
@@ -180,6 +180,14 @@ public class QuantityMeasurementTest {
         Length inch = new Length(36, Length.Unit.INCH);
         Length yard = new Length(1, Length.Unit.YARD);
         boolean check = inch.compare(yard);
+        Assert.assertTrue(check);
+    }
+
+    @Test
+    public void givenTwoInchAndFiveCm_WhenCompared_ShouldBeEqual() {
+        Length inch = new Length(2, Length.Unit.INCH);
+        Length centiMeter = new Length(5, Length.Unit.CENTIMETER);
+        boolean check=inch.compare(centiMeter);
         Assert.assertTrue(check);
     }
 }
