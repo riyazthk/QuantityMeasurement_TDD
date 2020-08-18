@@ -4,13 +4,11 @@ public class Length {
     private static final double FEET_TO_INCH_OR_INCH_TO_FEET = 12.0;
     private static final double YARD_TO_FEET = 3.0;
     private static final double INCH_TO_CENTIMETER = 2.5;
+    public Unit unit;
+    public double value;
 
-    public enum Unit {FEET, INCH, YARD,CENTIMETER}
 
-    ;
 
-    private double value;
-    private Unit unit;
 
 
     public Length(double value, Unit unit) {
@@ -38,6 +36,9 @@ public class Length {
         if(this.unit.equals(Unit.INCH)&& that.unit.equals(Unit.CENTIMETER))
             return Double.compare(this.value*INCH_TO_CENTIMETER,that.value)==0;
         return false;
+         }
+    public double add(Length that) {
+        return this.unit.convertToBaseUnit(this.value) + that.unit.convertToBaseUnit(that.value);
     }
 
     @Override
@@ -48,4 +49,12 @@ public class Length {
         return Double.compare(lengths.value, value) == 0 &&
                 unit == lengths.unit;
     }
+    //    public  double conversionToBaseUnit(Length length1, Length length2) {
+//       Unit value1=Unit.INCH;
+//
+//        if(length1.unit.equals(value1) || length2.unit.equals(value1))
+//        if(length1.unit.equals(value1) || length2.unit.equals(value1))
+//            return length1.value*
+//    }
+
 }
