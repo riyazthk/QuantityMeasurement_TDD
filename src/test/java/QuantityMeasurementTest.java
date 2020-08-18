@@ -228,7 +228,7 @@ public class QuantityMeasurementTest {
     public void givenOneGallonAndLitre_WhenCompared_ShouldBeEqual() {
         Length gallon = new Length(1, Unit.GALLON);
         Length litre = new Length(3.78, Unit.LITRE);
-        boolean check=gallon.compare(litre);
+        boolean check = gallon.compare(litre);
         Assert.assertTrue(check);
     }
 
@@ -236,7 +236,23 @@ public class QuantityMeasurementTest {
     public void givenOneLitreAndThousandMl_WhenCompared_ShuldBeEqual() {
         Length litre = new Length(1, Unit.LITRE);
         Length milliLitre = new Length(1000, Unit.MILLILITRES);
-        boolean check=litre.compare(milliLitre);
+        boolean check = litre.compare(milliLitre);
         Assert.assertTrue(check);
+    }
+
+    @Test
+    public void givenOneGallonAndLitre_WhenAdded_ShouldGetExpectedOutput() {
+        Length gallon = new Length(1, Unit.GALLON);
+        Length litre = new Length(3.78, Unit.LITRE);
+        double result = gallon.add(litre);
+        Assert.assertEquals(7.56,result,0.0);
+    }
+
+    @Test
+    public void givenOneLitreAndThousandMl_WhenAdded_ShouldGetExpectedOutput() {
+        Length litre = new Length(1, Unit.LITRE);
+        Length milliLitre = new Length(1000, Unit.MILLILITRES);
+        double result=litre.add(milliLitre);
+        Assert.assertEquals(2,result,0.0);
     }
 }
