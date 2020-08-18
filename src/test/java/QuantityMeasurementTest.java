@@ -1,17 +1,10 @@
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import quantitymeasurement.Length;
 import quantitymeasurement.Unit;
 
 
 public class QuantityMeasurementTest {
-
-    @Before
-    public void setUp() {
-
-    }
-
     @Test
     public void givenZeroFtAndZeroFt_WhenCompared_ShouldBeEqual() {
         Length feet1 = new Length(0, Unit.FEET);
@@ -35,7 +28,7 @@ public class QuantityMeasurementTest {
     @Test
     public void givenTypeAndType_WhenCompared_ShouldBeEqual() {
         Length feet1 = new Length(0, Unit.FEET);
-        Length feet2 = new Length(1, Unit.FEET);
+        Length feet2 = new Length(0, Unit.FEET);
         Assert.assertEquals(feet1, feet2);
 
     }
@@ -113,7 +106,7 @@ public class QuantityMeasurementTest {
     @Test
     public void givenOneFtAndTwelveInch_WhenCompared_ShouldBeEqual() {
         Length feet = new Length(1, Unit.FEET);
-        Length inch = new Length(12,Unit.INCH);
+        Length inch = new Length(12, Unit.INCH);
         boolean check = feet.compare(inch);
         Assert.assertTrue(check);
     }
@@ -121,7 +114,7 @@ public class QuantityMeasurementTest {
     @Test
     public void givenTwelveInchAndOneFt_WhenCompared_ShouldBeEqual() {
         Length inch = new Length(12, Unit.INCH);
-        Length feet = new Length(1,  Unit.FEET);
+        Length feet = new Length(1, Unit.FEET);
         boolean check = inch.compare(feet);
         Assert.assertTrue(check);
     }
@@ -178,7 +171,7 @@ public class QuantityMeasurementTest {
     @Test
     public void givenOneYdAndThirtySixInch_WhenCompared_ShouldBeEqual() {
         Length yard = new Length(1, Unit.YARD);
-        Length inch = new Length(36,Unit.INCH);
+        Length inch = new Length(36, Unit.INCH);
         boolean check = yard.compare(inch);
         Assert.assertTrue(check);
     }
@@ -210,24 +203,40 @@ public class QuantityMeasurementTest {
     @Test
     public void givenOneFtAndTwoInch_WhenAdded_ShouldGetExpectedOutput() {
         Length feet = new Length(1, Unit.FEET);
-        Length inch=new Length(2, Unit.INCH);
-        double result=feet.add(inch);
-        Assert.assertEquals(14,result,0.0);
+        Length inch = new Length(2, Unit.INCH);
+        double result = feet.add(inch);
+        Assert.assertEquals(14, result, 0.0);
     }
 
     @Test
     public void givenOneFtAndOneFt_WhenAdded_ShouldGetExpectedOutput() {
         Length feet1 = new Length(1, Unit.FEET);
         Length feet2 = new Length(1, Unit.FEET);
-        double result=feet1.add(feet2);
-        Assert.assertEquals(24,result,0.0);
+        double result = feet1.add(feet2);
+        Assert.assertEquals(24, result, 0.0);
     }
 
     @Test
     public void givenTwoInchAndCm_WhenAdded_ShouldGetExpectedOutput() {
         Length inch = new Length(2, Unit.INCH);
         Length centiMeter = new Length(2.5, Unit.CENTIMETER);
-        double result=inch.add(centiMeter);
-        Assert.assertEquals(3,result,0.0);
+        double result = inch.add(centiMeter);
+        Assert.assertEquals(3, result, 0.0);
+    }
+
+    @Test
+    public void givenOneGallonAndLitre_WhenCompared_ShouldBeEqual() {
+        Length gallon = new Length(1, Unit.GALLON);
+        Length litre = new Length(3.78, Unit.LITRE);
+        boolean check=gallon.compare(litre);
+        Assert.assertTrue(check);
+    }
+
+    @Test
+    public void givenOneLitreAndThousandMl_WhenCompared_ShuldBeEqual() {
+        Length litre = new Length(1, Unit.LITRE);
+        Length milliLitre = new Length(1000, Unit.MILLILITRES);
+        boolean check=litre.compare(milliLitre);
+        Assert.assertTrue(check);
     }
 }
