@@ -16,11 +16,6 @@ public enum Unit {
         this.unit=unit;
     }
 
-    public double convertToBaseUnit(double value) {
-
-        return value * baseUnitConversion;
-        }
-
     public Quantity convertToUnit(double value) {
         String val= unit;
         double result = value * baseUnitConversion;
