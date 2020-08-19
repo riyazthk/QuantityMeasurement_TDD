@@ -51,7 +51,7 @@ public class QuantityMeasurementTest {
     }
 
     @Test
-    public void givenZeroInchAndNull_WhenCompared_ShoulNotBeEqual() {
+    public void givenZeroInchAndNull_WhenCompared_ShouldNotBeEqual() {
         Quantity inch1 = new Quantity(0, Unit.INCH);
         Assert.assertNotEquals(null, inch1);
     }
@@ -286,7 +286,7 @@ public class QuantityMeasurementTest {
     }
 
     @Test
-    public void givenFahrenheitAndCelsius_WhenAdded_ShouldBeEqual()  {
+    public void givenFahrenheitAndCelsius_WhenAdded_ShouldBeEqual() {
         Quantity fahrenheit = new Quantity(212, Unit.FAHRENHEIT);
         Quantity celsius = new Quantity(100, Unit.CELSIUS);
         try {

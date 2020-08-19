@@ -1,9 +1,9 @@
 package quantitymeasurement;
 
 public enum Unit {
-    FEET(12.0), INCH(1.0), YARD(36.0), CENTIMETER(2.5),
-    GALLON(3.78), MILLILITRES(1000), LITRE(1),
-    KILOGRAM(1), TONNE(1000), GRAM(1000),
+    FEET(12.0), INCH(1.0), YARD(36.0), CENTIMETER(0.4),
+    GALLON(3.78), MILLILITRES(0.001), LITRE(1.0),
+    KILOGRAM(1.0), TONNE(1000), GRAM(0.001),
     FAHRENHEIT(1.0), CELSIUS(2.12);
 
 
@@ -14,10 +14,7 @@ public enum Unit {
         this.baseUnitConversion = baseUnitConversion;
     }
 
-    public double convertToBaseUnit(double value, Unit unit) {
-     if (unit == CENTIMETER || unit == MILLILITRES || unit == GRAM) {
-            return value / baseUnitConversion;
-        }
+    public double convertToBaseUnit(double value) {
         return value * baseUnitConversion;
     }
 }

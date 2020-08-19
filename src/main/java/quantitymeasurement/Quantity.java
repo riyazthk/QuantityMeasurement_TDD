@@ -17,13 +17,13 @@ public class Quantity {
         if (this.unit.equals(that.unit))
             return true;
 
-        return Double.compare(this.unit.convertToBaseUnit(this.value, that.unit), that.unit.convertToBaseUnit(that.value, that.unit)) == 0;
+        return Double.compare(this.unit.convertToBaseUnit(this.value), that.unit.convertToBaseUnit(that.value)) == 0;
     }
 
     public double add(Quantity that) throws QuantityMeasurementException {
         if(this.unit.equals(Unit.CELSIUS) || this.unit.equals(Unit.FAHRENHEIT))
             throw new QuantityMeasurementException("These quantities cannot be added",QuantityMeasurementException.ExceptionType.ADDITION_NOT_ALLOWED);
-        return this.unit.convertToBaseUnit(this.value, this.unit) + that.unit.convertToBaseUnit(that.value, that.unit);
+        return this.unit.convertToBaseUnit(this.value) + that.unit.convertToBaseUnit(that.value);
     }
 
     @Override
