@@ -22,8 +22,7 @@ public class Quantity {
             return true;
         if (this.unit.equals(that.unit))
             return true;
-
-        return Double.compare(this.unit.convertToBaseUnit(this.value), that.unit.convertToBaseUnit(that.value)) == 0;
+        return Double.compare(this.unit.convertToUnit(this.value).value,that.unit.convertToUnit(that.value).value) == 0;
     }
 
     public Quantity add(Quantity that) throws QuantityMeasurementException {
