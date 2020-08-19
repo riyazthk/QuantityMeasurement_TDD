@@ -2,13 +2,19 @@ package quantitymeasurement;
 
 public class Quantity {
 
+    public String type;
     public Unit unit;
     public double value;
 
 
-    public Quantity(double value, Unit unit) {
+    public Quantity(Unit unit,double value) {
         this.value = value;
         this.unit = unit;
+    }
+
+    public Quantity(String unit,double value) {
+        this.type=unit;
+        this.value=value;
     }
 
     public boolean compare(Quantity that) {
@@ -20,10 +26,12 @@ public class Quantity {
         return Double.compare(this.unit.convertToBaseUnit(this.value), that.unit.convertToBaseUnit(that.value)) == 0;
     }
 
-    public double add(Quantity that) throws QuantityMeasurementException {
+    public Quantity add(Quantity that) throws QuantityMeasurementException {
         if(this.unit.equals(Unit.CELSIUS) || this.unit.equals(Unit.FAHRENHEIT))
             throw new QuantityMeasurementException("These quantities cannot be added",QuantityMeasurementException.ExceptionType.ADDITION_NOT_ALLOWED);
-        return this.unit.convertToBaseUnit(this.value) + that.unit.convertToBaseUnit(that.value);
+        Quantity value1 = this.unit.convertToUnit(this.value) ;
+        Quantity value2 = that.unit.convertToUnit(that.value);
+        return new Quantity(value1.type,value1.value+value2.value);
     }
 
     @Override
